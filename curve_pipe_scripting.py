@@ -79,6 +79,4 @@ def create_strip_with_curpath(curname='curpath0',stripname='strip0'):
     create_strip(curname=curname,name=stripname)
 
 
-
-
 create_strip_with_curpath()
