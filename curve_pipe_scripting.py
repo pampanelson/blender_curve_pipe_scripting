@@ -1,5 +1,6 @@
 import bpy
-
+from bpy import context, data, ops
+scene = context.scene
 
 # def create_curve(name,startPointPos,endPointPos,curHeight,curLen,cornerRatio):
 def create_curve(name='curpath0'):
@@ -23,7 +24,13 @@ def create_curve(name='curpath0'):
             pts[i].co.z = 0.5
 
 
+def donothing():
+    # scene.frame_set(scene.frame_end)
+    # camera_path.location = (0.0, 0.0, 0.0)
+    # camera_path.keyframe_insert(data_path='location')
 
+
+    return
 
 
 def create_strip(curname='curpath0',name='strip0',location=(0,0,0),radius=0.1,size=4):
@@ -49,6 +56,21 @@ def create_strip(curname='curpath0',name='strip0',location=(0,0,0),radius=0.1,si
     bpy.context.object.modifiers["Curve"].object = bpy.data.collections[curname].objects['NurbsPath']
 
     bpy.context.object.modifiers["Curve"].deform_axis = 'POS_Z'
+
+    # get current cylinder object 
+    obj = bpy.data.objects[name]
+    # set frame start
+    scene.frame_set(0)
+    # set location
+    obj.location = (0,0,-5)
+    obj.keyframe_insert(data_path='location')
+
+    # set frame end
+    scene.frame_set(50)
+    obj.location = (0,0,5)
+    obj.keyframe_insert(data_path='location')
+
+
 
 
 
