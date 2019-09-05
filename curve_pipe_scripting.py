@@ -30,6 +30,7 @@ def create_strip(curname='curpath0',name='strip0',location=(0,0,0),radius=0.1,si
     # default z-axis up 
     rotation = (0,0,0)
     bpy.ops.mesh.primitive_cylinder_add(radius=radius, depth=2, enter_editmode=True, location=location,rotation=rotation)
+    # more subdivide make transform along with curve more smooth 
     bpy.ops.mesh.subdivide()
     bpy.ops.mesh.subdivide()
     bpy.ops.mesh.subdivide()
